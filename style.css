@@ -1,0 +1,211 @@
+:root {
+  color-scheme: light;
+  --ink: #241d1a;
+  --paper: #f4e7ce;
+  --red: #8c3436;
+}
+
+* { box-sizing: border-box; }
+
+html { min-height: 100%; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background: #c9ad87;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+.scene {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(16px, 4vw, 48px);
+  background:
+    radial-gradient(ellipse at 50% 48%, #dfc7a3 0, #cfb38e 55%, #bea17b 100%);
+}
+
+.music-toggle {
+  position: fixed;
+  z-index: 5;
+  top: 16px;
+  right: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border: 1px solid #80654466;
+  border-radius: 999px;
+  color: #35271c;
+  background: #f4e7ceee;
+  box-shadow: 0 4px 12px #49351f24;
+  font: 600 15px "Cormorant Garamond", Georgia, serif;
+  cursor: pointer;
+}
+
+.music-toggle[aria-pressed="true"] { color: #fff8ea; background: #70453e; }
+
+.book-page {
+  width: min(100%, 1060px);
+  min-height: 760px;
+  position: relative;
+  overflow: hidden;
+  padding: clamp(42px, 7vw, 76px) clamp(30px, 7.5vw, 94px) 64px;
+  border-left: 15px solid #795f46;
+  background:
+    linear-gradient(90deg, #7f62471c 0, transparent 4%, transparent 96%, #9a79521a 100%),
+    repeating-linear-gradient(0deg, #8d693a05 0, #8d693a05 1px, transparent 1px, transparent 5px),
+    radial-gradient(ellipse at 53% 45%, #fff8e9 0, var(--paper) 75%, #ead6b7 100%);
+  box-shadow: 0 22px 50px #49351f55, inset 10px 0 15px #5b40231c, inset 0 0 35px #a57b4624;
+}
+
+.book-page::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #9a795237;
+  pointer-events: none;
+}
+
+.page-header { position: relative; z-index: 1; text-align: center; }
+
+.dedication {
+  margin: 0 0 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .35em;
+}
+
+.page-header h1 {
+  margin: 0;
+  color: #171311;
+  font: 400 clamp(82px, 14vw, 150px)/.95 "Parisienne", cursive;
+}
+
+.title-stroke {
+  display: block;
+  width: clamp(115px, 23vw, 235px);
+  height: 7px;
+  margin: 12px auto 0;
+  border-radius: 50%;
+  background: var(--red);
+  transform: rotate(-9deg) skewX(-28deg);
+  clip-path: polygon(0 40%, 100% 0, 98% 45%, 8% 100%);
+}
+
+.story-layout {
+  display: block;
+  margin-top: 35px;
+}
+
+.memory-photos {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(16px, 4vw, 38px);
+  margin: 0 auto 35px;
+}
+
+.memory-photo {
+  width: min(39%, 260px);
+  margin: 2px 0 0;
+  padding: 9px 9px 30px;
+  background: #efe2c8;
+  border: 1px solid #d0b88e;
+  box-shadow: 0 8px 18px #49351f38;
+  transform: rotate(-3deg);
+}
+
+.memory-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  filter: sepia(.17) saturate(.8);
+}
+
+.memory-photo figcaption {
+  margin-top: 8px;
+  text-align: center;
+  color: #665646;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.story h2 {
+  margin: 0 0 17px;
+  text-align: center;
+  font-size: clamp(21px, 2.7vw, 29px);
+  font-weight: 700;
+}
+
+.story { max-width: 760px; margin: 0 auto; }
+
+.story p {
+  margin: 0 0 17px;
+  font-size: clamp(17px, 2vw, 21px);
+  line-height: 1.48;
+  text-align: justify;
+  text-indent: 1.5em;
+}
+
+.story .first-paragraph { text-indent: 1.5em; }
+
+.story .closing {
+  margin-top: 22px;
+  font-weight: 600;
+  text-align: left;
+  text-indent: 1.2em;
+}
+
+.handwritten-heart {
+  position: absolute;
+  color: #343252;
+  font: 46px/1 "Cormorant Garamond", serif;
+  transform: rotate(14deg);
+}
+
+.heart-one { right: 8%; bottom: 15%; }
+.heart-two { right: 13%; bottom: 10%; font-size: 38px; transform: rotate(-13deg); }
+
+.page-number {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+}
+
+.tape {
+  position: absolute;
+  right: -13px;
+  bottom: -9px;
+  padding: 19px 28px;
+  color: #42405d;
+  font-size: 19px;
+  background: #cbbb9d;
+  box-shadow: 0 2px 7px #49351f24;
+  transform: rotate(-14deg);
+}
+
+@media (max-width: 650px) {
+  .scene { display: block; padding: 10px; }
+  .book-page { min-height: 100vh; padding: 66px 24px 62px; border-left-width: 9px; }
+  .dedication { font-size: 9px; letter-spacing: .22em; }
+  .story-layout { margin-top: 26px; }
+  .memory-photos { gap: 14px; margin-bottom: 26px; }
+  .memory-photo { width: min(48%, 230px); margin: 0; padding: 6px 6px 22px; }
+  .memory-photo img { aspect-ratio: 3 / 4; }
+  .memory-photo figcaption { font-size: 12px; line-height: 1.15; }
+  .story h2 { margin-bottom: 13px; }
+  .story p { font-size: 18px; line-height: 1.48; margin-bottom: 14px; }
+  .handwritten-heart { font-size: 35px; }
+  .heart-one { right: 8%; bottom: 8%; }
+  .heart-two { right: 16%; bottom: 5%; font-size: 29px; }
+  .tape { padding: 12px 18px; font-size: 15px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
